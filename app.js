@@ -37,9 +37,9 @@ totalAmountButton.addEventListener("click", () => {
 
 
     //Set Balance
-
-
     balanceValue.innerText = tempAmount - expenditureValue.innerText;
+    
+    
 
 
     //Clear Input Box
@@ -57,8 +57,8 @@ totalAmountButton.addEventListener("click", () => {
 
 const disableButtons = (bool) => {
   let editButtons = document.getElementsByClassName("edit");
-  Array.from(editButtons).forEach((element) => {
-    element.disabled = bool;
+  Array.from(editButtons).forEach((btn) => {
+    btn.disabled = bool;
   });
 };
 
@@ -150,7 +150,13 @@ checkAmountButton.addEventListener("click", () => {
 
 
   const totalBalance = tempAmount - sum;
-  balanceValue.innerText = totalBalance;
+    if(totalBalance < 0 ){
+      balanceValue.innerText = tempAmount - sum;
+      alert("Expences out of total budget !");
+    }else{
+      balanceValue.innerText = totalBalance;
+    }
+  
 
 
   //Create list
